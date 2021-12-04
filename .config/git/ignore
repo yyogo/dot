@@ -1,0 +1,8 @@
+.DS_Store/
+
+# wip
+*.wip
+# checponttnss
+ .ipynb_checkpoints
+
+ .git-local

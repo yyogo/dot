@@ -1,0 +1,3 @@
+
+# Enter VI mode by typing 'j-k'
+bindkey -e jk vi-cmd-mode
