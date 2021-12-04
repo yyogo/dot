@@ -1,0 +1,45 @@
+[init]
+	defaultBranch = main
+[user]
+	name = Jonathan Goren
+	email = jonagn@gmail.com
+	signingkey = F534E208
+
+
+[alias]
+    s = status -M -uno
+    l = log 
+    ci = commit
+    co = checkout
+    b = branch
+    d = diff
+    update = !git stash && git fetch -a origin && git rebase origin/main && git stash pop
+    dr = !git push origin :$1
+    dc = diff --cached
+
+[pull]
+	rebase = false
+	ff = only
+[filter "lfs"]
+	clean = git-lfs clean -- %f
+	smudge = git-lfs smudge -- %f
+	process = git-lfs filter-process
+	required = true
+[difftool "sourcetree"]
+	cmd = opendiff \"$LOCAL\" \"$REMOTE\"
+	path = 
+[mergetool "sourcetree"]
+	cmd = /Users/jon/Applications/Sourcetree.app/Contents/Resources/opendiff-w.sh \"$LOCAL\" \"$REMOTE\" -ancestor \"$BASE\" -merge \"$MERGED\"
+	trustExitCode = true
+[commit]
+	template = /Users/jon/.stCommitMsg
+
+[mergetool "vscode"]
+    cmd = code --wait $MERGED
+
+[difftool "vscode"]
+    cmd = code --wait --diff $LOCAL $REMOTE
+[diff]
+	tool = vscode
+[merge]
+	tool = vscode
