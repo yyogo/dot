@@ -80,6 +80,8 @@ return {
         
         {key="s", mods="SUPER", action=wezterm.action{SplitVertical={domain="CurrentPaneDomain"}}},
         {key="s", mods="SUPER|SHIFT", action=wezterm.action{SplitHorizontal={domain="CurrentPaneDomain"}}},
+        {key="\'", mods="SUPER", action=wezterm.action{SplitVertical={domain="CurrentPaneDomain"}}},
+        {key="\\", mods="SUPER", action=wezterm.action{SplitHorizontal={domain="CurrentPaneDomain"}}},
         {key="w", mods="SUPER", action=wezterm.action{
             CloseCurrentPane={confirm=true}
         }},
@@ -92,6 +94,7 @@ return {
         {key="x", mods="SUPER", action="ActivateCopyMode"},
         {key="x", mods="SUPER|SHIFT", action="QuickSelect"},
         {key="z", mods="SUPER", action="TogglePaneZoomState"},
+        {key="Enter", mods="SUPER", action="TogglePaneZoomState"},
         
         {key="UpArrow", mods="SUPER", action=wezterm.action{ActivatePaneDirection="Up"}},
         {key="DownArrow", mods="SUPER", action=wezterm.action{ActivatePaneDirection="Down"}},

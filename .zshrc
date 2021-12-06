@@ -189,5 +189,5 @@ export HISTSIZE=1000000
 source ~/.iterm2_shell_integration.zsh
 
 export DOT_GIT="$HOME/.dot"
-alias dot="git --work-tree=$HOME --git-dir=$DOT_GIT"
+alias .dot="git --work-tree=$HOME --git-dir=$DOT_GIT"
 

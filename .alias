@@ -21,6 +21,7 @@ alias python=python3
 
 alias gdc='git diff --cached'
 alias gs='git s'
+alias gsu='git status -uall'
 alias gci='git commit'
 alias gcim='git commit -m'
 alias gcia='git commit --all'
@@ -59,3 +60,5 @@ alias deploy_sandcastle="raftt sh dev -- deploy_sandcastle"
 
 
 source ~/.aliasme/aliasme.sh
+
+alias t=todo.sh
