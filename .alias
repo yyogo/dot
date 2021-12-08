@@ -1,64 +1,12 @@
-#!/bin/sh
-alias pipins='sudo -H pip install'
-alias tmux='tmux -2u'
-alias unpack='aunpack'
-alias iou='cd ~/ios/ios_team/ios/utils'
-alias pipenv='.env/bin/python -m pip'
-alias pipiu='pip install --user'
-alias subl='open -a Sublime\ Text'
-alias finder='open -a Finder'
-alias brew='HOMEBREW_NO_AUTO_UPDATE=1 brew'
-alias commit='git commit'
-alias checkout='git checkout'
-alias branch='git branch'
-alias status='git status'
-alias add='git add'
-alias pip='pip3'
-alias gmt='go mod tidy'
+alias tmux=tmux -2u
 
-alias vim=nvim
-alias python=python3
-
-alias gdc='git diff --cached'
-alias gs='git s'
-alias gsu='git status -uall'
-alias gci='git commit'
-alias gcim='git commit -m'
-alias gcia='git commit --all'
-alias gcin='git commit --amend'
-
-# git push new branch
-gpn() {
-    branch=$(git branch --show-current) || return 1
-    git push --set-upstream origin $branch "$@"
+otrm() {
+	if [ -v "HISTFILE" ] ; then
+		hist=$HISTFILE
+		unset HISTFILE
+		sed -i '/unset HISTFILE/d;/\;otrm/d' $hist
+		export PS1="(*) $PS1"
+	fi
 }
+alias gs="git status -u none"
 
-source ~/event.sh
-
-RAFTT_CLI=$HOME/raftt/raftt/build/mac/cli
-alias oar=$RAFTT_CLI
-alias rafttdev="RAFTT_HOME=$HOME/.raftt.dev $RAFTT_CLI"
-
-gop() {
-    pushd ~/raftt/raftt
-        make cli
-    popd
-}
-
-alias rft=~/raftt/raftt/build/mac/cli
-RPG_CLI=rpg-cli
-rpg () {
-   $RPG_CLI "$@"
-   cd "$($RPG_CLI --pwd)"
-}
-
-reload_alias() {
-    source ~/.alias
-}
-
-alias deploy_sandcastle="raftt sh dev -- deploy_sandcastle"
-
-
-source ~/.aliasme/aliasme.sh
-
-alias t=todo.sh
