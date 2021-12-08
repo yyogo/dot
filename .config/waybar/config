@@ -1,0 +1,153 @@
+{
+    "layer": "top", // Waybar at top layer
+    "position": "top", // Waybar at the bottom of your screen
+    "height": 25, // Waybar height
+    // "width": 1366, // Waybar width
+    // Choose the order of the modules
+    "modules-left": ["sway/workspaces", "sway/mode", "sway/window"],
+    "modules-center": ["clock","custom/weather",],
+    "modules-right": ["custom/spotify","tray", "network", "cpu", "memory", "battery",  "custom/layout", "pulseaudio", "custom/inhibitor"],
+    "sway/workspaces": {
+        "disable-scroll": false,
+        "all-outputs": false,
+        "format": "<sup>{index}</sup>{icon}",
+        "format-icons": {
+            "ff": "",
+            "focused": "",
+            //"1": "❶",
+            //"2": "❷",
+            //"3": "❸",
+            //"4": "❹",
+            //"5": "❺",
+            //"6": "❻",
+            //"7": "❼",
+            //"8": "❽",
+            //"9": "❾",
+            //"10": "❿",
+            "code": "",
+            "term": "",
+            "chat": "",
+            "music": "",
+            "pic": "",
+            "urgent": "",
+            "default": ""
+        },
+    },
+    "sway/window": {
+        "max-length": 60
+    },
+    "sway/mode": {
+        "format": "⟨{}⟩"
+    },
+    "tray": {
+        "icon-size": 24,
+        "spacing": 10
+    },
+    "clock": {
+        "format": "{:%a %d %b %R}",
+        "format-alt": "{:%Y-%m-%d %H:%M:%S}"
+    },
+    "cpu": {
+        "format": "<span size=\"x-small\" rise=\"1000\">{usage:3}%</span>"
+    },
+    "memory": {
+        "format": "<span size=\"x-small\" rise=\"1000\">{:3}%</span>",
+        "states": {
+            "low": 0,
+            "normal": 30,
+            "medium": 60,
+            "high": 85,
+            "full": 95
+        }
+    },
+    "battery": {
+        "bat": "BAT0",
+        "states": {
+            // "full": 95,
+            "warning": 40,
+            "critical": 10
+        },
+        "format": "<span size=\"x-small\" rise=\"1000\">{capacity:3}%</span>{icon}",
+        // "format-good": "", // An empty format will hide the module
+        // "format-full": "",
+        "format-charging": "<span size=\"x-small\" rise=\"1000\">{capacity:3}%</span>",
+        "format-icons": ["","","","","","","","","","",""]
+    },
+    //"idle_inhibitor": {
+    //    "format": "{icon}",
+    //    "format-icons": {
+    //        "activated": "",
+    //        "deactivated": ""
+    //    },
+    //    "on-update": "echo {status} > /tmp/idle-state"
+    //},
+    "custom/inhibitor": {
+        "format": "{icon}",
+        "format-icons": [ "", "" ],
+        "exec": "sleep 0.1 && ~/.config/waybar/inhibit",
+        "interval": 60,
+        "return-type": "json",
+        "exec-on-event": true,
+        "on-click": "~/.local/bin/systemd-toggle --user inhibitor"
+    },
+    "network": {
+        "interface": "wlp1s0", // (Optional) To force the use of this interface
+        "format-icons": ["睊", "<span size=\"xx-small\"></span>", "<span size=\"x-small\"></span>", "<span size=\"small\"></span>", ""],
+        "format-wifi": "<span size=\"small\" rise=\"800\">{essid:.10} </span>{icon}",
+        //"format-ethernet": "{ifname}: {ipaddr}/{cidr} ",
+        "format-ethernet": "",
+        "format-disconnected": "Disconnected ⚠",
+        "tooltip-format-wifi": "{ifname}:{ipaddr} {essid} {signaldBm}dBm ({signalStrength}%)  {bandwidthUpBits} {bandwidthDownBits}",
+        "tooltip-format-disconnected": "Disconnected",
+
+        "interval": 5
+    },
+    //"network#vpn": {
+    //    "interface": "tun0", // (Optional) To force the use of this interface
+    //    "format-ethernet": "",
+    //    "format-disconnected": "",
+    //    "tooltip-format": "VPN connected: {ifname}:{ipaddr}",
+    //    "tooltip-format-disconnected": "VPN disconnected",
+    //    "interval": 5
+    //},
+    "pulseaudio": {
+        //"scroll-step": 1,
+        "format": "{icon}",
+        "format-bluetooth": "{icon}",
+        "format-muted": "",
+        "format-icons": {
+            "headphones": "",
+            "handsfree": "",
+            "headset": "",
+            "phone": "",
+            "portable": "",
+            "car": "",
+            "default": ["奄","","墳", ""]
+        },
+        "on-click": "pavucontrol"
+    },
+    "custom/layout": {
+        "exec": "$HOME/.config/waybar/layout.sh 2> /dev/null", 
+        "format": "{:2.2}",
+        "signal": 1,
+        "on-click": "swaymsg 'input * xkb_switch_layout next'"
+    },
+    "custom/spotify": {
+        "format": " {}",
+        "max-length": 40,
+        "interval": 10,
+        "exec": "$HOME/.config/waybar/mediaplayer.sh 2> /dev/null", // Script in resources folder
+        "exec-if": "pgrep spotify"
+    },
+    "custom/weather": {
+        "format": "{:8}",
+        "tooltip": true,
+        "interval": 3600,
+        "exec": "$HOME/.config/waybar/wttr.py",
+        "return-type": "json"
+    },
+    "custom/exit":{
+        "format": "⏻",
+        "on-click": "swaymsg 'mode \"$mode_system\"'"
+    }
+}

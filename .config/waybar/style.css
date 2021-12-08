@@ -1,0 +1,146 @@
+* {
+    border: none;
+    font-family: "Jetbrains Mono Medium";
+    font-size: 16px;
+    min-height: 0;
+    transition: all linear 0.1s;
+}
+
+window#waybar {
+    background: transparent;
+    background-image: linear-gradient(to top, transparent 0%, rgba(0%,0%,0%,0.6) 100%);
+    color: white;
+}
+
+#window {
+    /*border-radius:20px;
+    box-shadow:0 0 3px 1px #9922aa inset;
+    background: #64727D;
+    background: linear-gradient(to top, transparent 0%, rgba(100,100,100,0.5) 100%);
+    border-top: 2px solid #b880d0; */
+    color: #f2e9f7;
+    padding-left: 10px;
+    padding-right: 10px;
+    font-weight: bold;
+    font-size: 18px;
+    font-family: "Ubuntu";
+    text-shadow: 1px 1px 3px black;
+}
+/*
+#workspaces {
+    padding: 0 5px;
+}
+*/
+
+
+#workspaces button {
+    padding: 0 5px;
+    background: transparent;
+    color: white;
+    border-top: 2px solid transparent;
+}
+
+#workspaces button.focused {
+    color: #deb0f2;
+    border-top: 2px solid #b880d0;
+    text-shadow: 0 0 1px white;
+}
+
+#mode {
+    background: #b880d0;
+    border-bottom: 3px solid white;
+    font-family: "NotoSans Nerd Font";
+}
+
+#clock, #custom-inhibitor, #custom-layout, #battery, #cpu, #memory, #network, #pulseaudio, #custom-spotify, #tray, #mode, #custom-weather {
+    padding: 0px 5px;
+    margin: 0 2px;
+}
+
+#custom-weather {
+}
+
+#clock {
+}
+
+#battery {
+}
+
+#battery icon {
+    color: red;
+}
+
+#battery.charging {
+	/*color: green*/
+}
+
+@keyframes blink {
+    to {
+        background-color: #ffffff;
+        color: black;
+    }
+}
+
+#battery.warning:not(.charging) {
+	color: orange
+}
+
+#battery.critical:not(.charging) {
+    color: red;
+    animation-name: blink;
+    animation-duration: 1.0s;
+    animation-timing-function: linear;
+    animation-iteration-count: infinite;
+    animation-direction: alternate;
+}
+
+#cpu {
+}
+
+#memory {
+}
+
+
+#memory.high {
+    color: #ffdba8;
+}
+
+#memory.full {
+    color: #ff7a7a;
+}
+
+#network {
+}
+
+#custom-inhibitor {
+    color: darkgray;
+    transition: color 1s;
+}
+
+#custom-inhibitor.activated {
+    color: yellow;
+    text-shadow: 0 0 2px white;
+}
+
+#network.disconnected {
+    color: #e15151;
+}
+
+#pulseaudio {
+}
+
+#pulseaudio.muted {
+    color: #888888;
+}
+
+#custom-layout {
+}
+
+#custom-spotify {
+    color: rgb(102, 220, 105);
+    font-size: small;
+}
+
+#tray {
+}
+

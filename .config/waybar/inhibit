@@ -1,0 +1,9 @@
+#!/bin/sh
+
+systemctl="systemctl --user"
+
+if $systemctl is-active inhibitor --quiet; then 
+    echo '{"text": "", "tooltip": "Sleep inhibited", "class": "activated", "percentage": 100 }'
+else
+    echo '{"text": "", "tooltip": "Sleep allowed", "class": "deactivated", "percentage": 0 }'
+fi

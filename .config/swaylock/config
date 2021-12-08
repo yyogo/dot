@@ -1,0 +1,7 @@
+show-keyboard-layout
+image=/home/jonathan/.config/swaylock/lock.png
+scaling=center
+indicator-radius=240
+inside-color=00000000
+indicator-idle-visible
+line-uses-ring

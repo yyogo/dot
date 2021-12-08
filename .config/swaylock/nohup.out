@@ -1,0 +1,117 @@
+Got sleep lock: 11
+209998
+209999
+[
+  {
+    "success": true
+  }
+]
+209998
+209999
+[
+  {
+    "success": true
+  }
+]
+209998
+209999
+[
+  {
+    "success": true
+  }
+]
+[
+  {
+    "success": true
+  }
+]
+209998
+209999
+[
+  {
+    "success": true
+  }
+]
+209998
+209999
+[
+  {
+    "success": true
+  }
+]
+209998
+209999
+[
+  {
+    "success": true
+  }
+]
+[
+  {
+    "success": true
+  }
+]
+[
+  {
+    "success": true
+  }
+]
+213788
+213789
+[
+  {
+    "success": true
+  }
+]
+[
+  {
+    "success": true
+  }
+]
+2020-11-29 15:33:07 - [swaylock-1.5/pam.c:101] pam_authenticate failed: unknown error (6)
+213788
+213789
+[
+  {
+    "success": true
+  }
+]
+213788
+213789
+[
+  {
+    "success": true
+  }
+]
+213788
+213789
+[
+  {
+    "success": true
+  }
+]
+[
+  {
+    "success": true
+  }
+]
+213788
+213789
+[
+  {
+    "success": true
+  }
+]
+213788
+213789
+[
+  {
+    "success": true
+  }
+]
+Releasing sleep lock 11
+Got sleep lock: 12
+Releasing sleep lock 12
+Got sleep lock: 12
+Releasing sleep lock 12
+Got sleep lock: 12
