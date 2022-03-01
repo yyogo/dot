@@ -93,6 +93,9 @@ return {
         }},
         {key="x", mods="SUPER", action="ActivateCopyMode"},
         {key="x", mods="SUPER|SHIFT", action="QuickSelect"},
+        --{key="x", mods="SUPER|SHIFT", action=wezterm.action{QuickSelectArgs={patterns={
+          --"\\w{5,}"
+       --},}}},
         {key="z", mods="SUPER", action="TogglePaneZoomState"},
         {key="Enter", mods="SUPER", action="TogglePaneZoomState"},
         

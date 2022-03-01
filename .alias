@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/bin/bash
 alias pipins='sudo -H pip install'
 alias tmux='tmux -2u'
 alias unpack='aunpack'
@@ -62,3 +62,39 @@ alias deploy_sandcastle="raftt sh dev -- deploy_sandcastle"
 source ~/.aliasme/aliasme.sh
 
 alias t=todo.sh
+alias k=kubectl
+
+exorcism() {
+    pids=($(pgrep -fi adobe))
+    if [ ${#pids} -eq 0 ]; then
+        echo "No evil spirits detected."
+        return
+    fi
+    echo "Detected ${#pids} evil spirits: "
+    ps -o 'pid=,command=' -p ${(j:,:)pids}
+    
+    echo -n "Would you like to proceed with the exorcism? [Y/n] "
+    read anwer
+    case $answer in
+        n* | N*) echo "Cancelled."; return;;
+    esac
+
+    echo "* Evil Spirits, begone!! *"
+    if ps -o 'uid=' -p ${(j:,:)pids} | awk '{print $1;}' | grep '^0$' >/dev/null; then
+        echo "  The power of Root compells you!!"
+        sudo kill -9 "${pids[@]}"
+    else
+        kill -9 "${pids[@]}"
+    fi
+    if [ $? -eq 0 ]; then
+        echo Exorcism is done. All spirits were banished successfully.
+    else
+        echo Some evil spirits remain...
+    fi
+}
+
+alias startlinux="VBoxManage startvm --type headless Arch; ssh archbox"
+alias stoplinux="VBoxManage controlvm Arch poweroff"
+
+
+alias ls=lsd

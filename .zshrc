@@ -69,14 +69,14 @@ ZSH_THEME="powerlevel10k/powerlevel10k"
 
 plugins=(
  brew
- cargo
+ rust
  colored-man-pages
  fd
  docker
  git 
  compleat
  copydir
- fzf
+ #fzf
  vscode
  z
 )
@@ -144,12 +144,10 @@ export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND"
 export FZF_TMUX=1
 [ -f ~/.local/fzf.zsh ] && source ~/.local/fzf.zsh
 
-source ~/.alias
-source $HOME/.cargo/env
 source ~/.config/zsh/zle
 
 export LC_ALL=en_US.UTF-8
-export EDITOR=nvim
+export EDITOR=hx
 
 #source $HOME/Library/Preferences/org.dystroy.broot/launcher/bash/br
 
@@ -191,3 +189,7 @@ source ~/.iterm2_shell_integration.zsh
 export DOT_GIT="$HOME/.dot"
 alias .dot="git --work-tree=$HOME --git-dir=$DOT_GIT"
 
+
+[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+source ~/.config/zsh/functions.sh
+source ~/.config/zsh/key-binding.zsh

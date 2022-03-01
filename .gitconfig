@@ -3,11 +3,10 @@
 [user]
 	name = Jonathan Goren
 	email = jonagn@gmail.com
-	signingkey = F534E208
 
 
 [alias]
-    s = status -M -uno
+    s = status -M
     l = log 
     ci = commit
     co = checkout
@@ -16,6 +15,7 @@
     update = !git stash && git fetch -a origin && git rebase origin/main && git stash pop
     dr = !git push origin :$1
     dc = diff --cached
+    cp = cherry-pick
 
 [pull]
 	rebase = false
@@ -42,4 +42,13 @@
 [diff]
 	tool = vscode
 [merge]
-	tool = vscode
+    tool = vscode
+
+[core]
+    pager = delta
+
+[interactive]
+    diffFilter = delta --color-only --features=interactive
+
+[delta]
+    features = decorations
