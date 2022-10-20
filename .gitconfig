@@ -16,6 +16,7 @@
     dr = !git push origin :$1
     dc = diff --cached
     cp = cherry-pick
+    oops = commit --amend --all --sign -C HEAD
 
 [pull]
 	rebase = false

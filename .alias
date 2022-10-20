@@ -3,7 +3,7 @@ alias pipins='sudo -H pip install'
 alias tmux='tmux -2u'
 alias unpack='aunpack'
 alias iou='cd ~/ios/ios_team/ios/utils'
-alias pipenv='.env/bin/python -m pip'
+alias pipenv='.venv/bin/python -m pip'
 alias pipiu='pip install --user'
 alias subl='open -a Sublime\ Text'
 alias finder='open -a Finder'
@@ -63,6 +63,7 @@ source ~/.aliasme/aliasme.sh
 
 alias t=todo.sh
 alias k=kubectl
+alias kctx="kubectl config set current-context"
 
 exorcism() {
     pids=($(pgrep -fi adobe))
@@ -98,3 +99,8 @@ alias stoplinux="VBoxManage controlvm Arch poweroff"
 
 
 alias ls=lsd
+
+alias fblogz="fblog -x msg -x level -x time -x 'commandline[0]' -x 'commandline[1]' -x 'commandline[3]'  -x 'commandline[2]' -x commit -x compiledWhen -x version -x @timestamp -x ecs.version -x message -x log.level"
+
+alias babushka="AWS_PROFILE=kops kops export kubecfg --state s3://babushka.kops-ss.raftt babushka.raftt.link --admin"
+alias kdev="kubectl use-context dev"

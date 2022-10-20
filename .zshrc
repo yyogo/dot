@@ -1,7 +1,7 @@
 # Enable Powerlevel10k instant prompt. Should stay close to the top of ~/.zshrc.
 # Initialization code that may require console input (password prompts, [y/n]
 # confirmations, etc.) must go above this block; everything else may go below.
-if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]; then
+if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]] && [[ -z "$P10K_DISABLE" ]]; then
   source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
 fi
 
@@ -14,7 +14,11 @@ export ZSH=$HOME/.oh-my-zsh
 # Set name of the theme to load. Optionally, if you set this to "random"
 # it'll load a random theme each time that oh-my-zsh is loaded.
 # See https://github.com/robbyrussell/oh-my-zsh/wiki/Themes
-ZSH_THEME="powerlevel10k/powerlevel10k"
+if [[ -z "$P10K_DISABLE" ]]; then
+  ZSH_THEME="powerlevel10k/powerlevel10k"
+else
+  ZSH_THEME="gallois"
+fi
 
 # Set list of themes to load
 # Setting this variable when ZSH_THEME=random
@@ -75,7 +79,7 @@ plugins=(
  docker
  git 
  compleat
- copydir
+ copypath
  #fzf
  vscode
  z
@@ -182,7 +186,7 @@ bindkey "^[[1;3B" history-beginning-search-forward
 export HISTSIZE=1000000
 
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
-[[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
+[[ -f ~/.p10k.zsh ]] && [[ -z "$P10K_DISABLE" ]] && source ~/.p10k.zsh || true
 
 source ~/.iterm2_shell_integration.zsh
 
@@ -193,3 +197,4 @@ alias .dot="git --work-tree=$HOME --git-dir=$DOT_GIT"
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 source ~/.config/zsh/functions.sh
 source ~/.config/zsh/key-binding.zsh
+
