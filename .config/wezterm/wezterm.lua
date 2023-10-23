@@ -40,19 +40,19 @@ end
 -- end)
 
 return {
-    --enable_tab_bar = false,
+    -- enable_tab_bar = false,
     --hide_tab_bar_if_only_one_tab = true,
     tab_bar_at_bottom = true,
-    send_composed_key_when_alt_is_pressed = false,
+    send_composed_key_when_right_alt_is_pressed = false,
     adjust_window_size_when_changing_font_size = false,
     use_ime = false,
     
     font = wezterm.font_with_fallback({
-        {family="JetBrains Mono", weight="Light"},
+        {family="JetBrainsMono Nerd Font"},
         {family="MesloLGS NF"},
     }), 
     freetype_load_target = "Light",
-    font_size = 14.5,
+    font_size = 13,
     
     keys = {
         {key="LeftArrow", mods="ALT", action=wezterm.action{SendString="\x1bb"}},
@@ -106,6 +106,8 @@ return {
 
         {key="PageUp", mods="SUPER", action=wezterm.action{ActivateTabRelative=1}},
         {key="PageDown", mods="SUPER", action=wezterm.action{ActivateTabRelative=-1}},
+
+        {key="F13", action=wezterm.action{SendString="\x1b[25~"}},
     },
     
     window_padding = {
@@ -126,9 +128,9 @@ return {
     
     inactive_pane_hsb = {
         saturation = 0.8,
-        brightness = 0.7,
+        brightness = 1.7
     },
-    scrollback_lines = 10000,
+    scrollback_lines = 100000,
 
     quick_select_patterns = {
         "[0-9a-f]{7,64}", -- hashes
@@ -139,9 +141,9 @@ return {
     --unzoom_on_switch_pane = true,
 
 
---   tab_bar_style = {
---     new_tab = wezterm.format(format_tab(true, false, "+",3)),
---     new_tab_hover = wezterm.format(format_tab(false, true, "+",3)),
---   }
+  -- tab_bar_style = {
+  --   new_tab = wezterm.format(format_tab(true, false, "+",3)),
+  --   new_tab_hover = wezterm.format(format_tab(false, true, "+",3)),
+  -- },
    skip_close_confirmation_for_processes_named = {"NONE"},
 }

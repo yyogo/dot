@@ -1,4 +1,4 @@
-.DS_Store/
+.DS_Store
 
 # wip
 *.wip
@@ -6,3 +6,5 @@
  .ipynb_checkpoints
 
  .git-local
+
+*.egg-info

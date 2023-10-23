@@ -3,7 +3,6 @@ alias pipins='sudo -H pip install'
 alias tmux='tmux -2u'
 alias unpack='aunpack'
 alias iou='cd ~/ios/ios_team/ios/utils'
-alias pipenv='.venv/bin/python -m pip'
 alias pipiu='pip install --user'
 alias subl='open -a Sublime\ Text'
 alias finder='open -a Finder'
@@ -26,6 +25,7 @@ alias gci='git commit'
 alias gcim='git commit -m'
 alias gcia='git commit --all'
 alias gcin='git commit --amend'
+alias gsm='git submodule'
 
 # git push new branch
 gpn() {
@@ -33,7 +33,7 @@ gpn() {
     git push --set-upstream origin $branch "$@"
 }
 
-source ~/event.sh
+#source ~/event.sh
 
 RAFTT_CLI=$HOME/raftt/raftt/build/mac/cli
 alias oar=$RAFTT_CLI
@@ -59,7 +59,7 @@ reload_alias() {
 alias deploy_sandcastle="raftt sh dev -- deploy_sandcastle"
 
 
-source ~/.aliasme/aliasme.sh
+# source ~/.aliasme/aliasme.sh
 
 alias t=todo.sh
 alias k=kubectl
@@ -104,3 +104,21 @@ alias fblogz="fblog -x msg -x level -x time -x 'commandline[0]' -x 'commandline[
 
 alias babushka="AWS_PROFILE=kops kops export kubecfg --state s3://babushka.kops-ss.raftt babushka.raftt.link --admin"
 alias kdev="kubectl use-context dev"
+
+_activate_fn() {
+    setopt -s dotglob
+    envs=(*/pyvenv.cfg)
+    envs=(${envs%%/pyvenv.cfg})
+    case ${#envs} in
+        0) echo "No venvs found" >&2; return 1;;
+        1) echo ${envs[1]}; return 0;;
+        *) select env in ${envs[@]}; do echo $env; break; done
+    esac
+}
+
+alias activate='_venv_src=$(_activate_fn) && source "${_venv_src}/bin/activate"'
+
+alias mnm='(cd ~/ios/mnm; ./mnm_client.py -i)'
+alias ag=rg
+
+[[ -f "$HOME/.fzf-git.zsh" ]] && . "$HOME/.fzf-git.zsh"
